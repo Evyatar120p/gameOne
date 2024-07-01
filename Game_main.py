@@ -27,8 +27,7 @@ bulletSound = pygame.mixer.Sound("bullet.mav")
 music = pygame.mixer.music.load('music.mp3')
 pygame.mixer.music.play(-1) #-1 so it will play all the time
 
-
-
+#elad
 
 
 def draw_game():
