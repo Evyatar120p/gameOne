@@ -21,7 +21,7 @@ score = 0 # so we can track how mant time i killes the enemy
 
 #to make a sound when i fire a bullet
 bulletSound = pygame.mixer.Sound("bullet.mav")
-#gggg
+
 
 #to music play while the game is on
 music = pygame.mixer.music.load('music.mp3')
