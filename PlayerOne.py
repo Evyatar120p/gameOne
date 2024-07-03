@@ -18,7 +18,7 @@ class player(object):
         self.x = x
         self.width = width
         self.height = height
-        self.player_vel = 5
+        self.player_vel = 10
 
         # for the jumpung part
         self.is_jump = False
@@ -60,12 +60,16 @@ class player(object):
 
 
     def hit(self,screen):
-        self.x = 930  # We are resetting the player position
+        score_down = self.x
+        if self.x > 500:
+            self.x = 0
+        else:
+            self.x = 930  # We are resetting the player position
         self.walkCount = 0
 
-        font1 = pygame.font.SysFont('comicsans', 100)
-        text = font1.render('-5', 1, (255, 0, 0))
-        screen.blit(text, (500, 260))
+        font1 = pygame.font.SysFont('comicsans', 50)
+        text = font1.render('-4', 1, (255, 0, 0))
+        screen.blit(text, (score_down, 400))
         pygame.display.update()
         i = 0
         while i < 50:

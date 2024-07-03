@@ -2,6 +2,7 @@ import pygame
 from Enemy import enemy
 from Projectile import projectile
 from PlayerOne import player
+import time
 
 pygame.init()
 
@@ -25,9 +26,8 @@ bulletSound = pygame.mixer.Sound("bullet.mav")
 
 #to music play while the game is on
 music = pygame.mixer.music.load('music.mp3')
+pygame.mixer.music.set_volume(0.02) #so the music will be weeker
 pygame.mixer.music.play(-1) #-1 so it will play all the time
-
-#elad
 
 
 def draw_game():
@@ -62,16 +62,35 @@ while run:
     fps.tick(27)
 
 
+    for event in pygame.event.get():              #to make the screen stay on , its making a list of every thing you do and checks if you press quit
+        if event.type == pygame.QUIT:
+            run = False
+
+
     #so we shoot one bullet at the time (it makes a time delay)
     if shootOne > 0:
         shootOne += 1
     if shootOne > 10:
         shootOne = 0
 
+    if score <= -20:
+        # Render the "GAME OVER" message
+        text = font.render('GAME OVER',True, (255, 0, 0))
+        score_text = font.render('Your score is under -20', True, (255, 0, 0))
 
-    for event in pygame.event.get():              #to make the screen stay on , its making a list of every thing you do and checks if you press quit
-        if event.type == pygame.QUIT:
-            run = False
+        # Calculate the position to center the text
+        text_rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+        score_text_rect = score_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 50))
+
+        # Display the "GAME OVER" message
+        screen.fill((0, 0, 0))  # Clear the screen
+        screen.blit(text, text_rect)
+        screen.blit(score_text, score_text_rect)
+        pygame.display.flip()
+
+        # Wait for 1 second and stop the game
+        pygame.time.wait(2000)
+        run = False
 
 
     if lior.visible :   # so we will hit him inly when he is alive
@@ -79,7 +98,7 @@ while run:
         if david.hitbox[1] < lior.hitbox[1] + lior.hitbox[3] and david.hitbox[1] + david.hitbox[3] > lior.hitbox[1]: # y axis
             if david.hitbox[0] + david.hitbox[2] > lior.hitbox[0] and david.hitbox[0] < lior.hitbox[0] + lior.hitbox[2]: # x axis
                 david.hit(screen)
-                score -= 2
+                score -= 4
 
 
         # to make the enemy get hit br a bullet
@@ -141,7 +160,7 @@ while run:
             david.walkCount = 0
 
 
-    else:     # to make thw character jump
+    else:     # to make the character jump
         if david.jumpCount >= -10:
             neg = 1
             if david.jumpCount < 0:
