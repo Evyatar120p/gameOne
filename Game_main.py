@@ -2,7 +2,6 @@ import pygame
 from Enemy import enemy
 from Projectile import projectile
 from PlayerOne import player
-import time
 
 pygame.init()
 
