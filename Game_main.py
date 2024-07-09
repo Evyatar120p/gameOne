@@ -26,7 +26,7 @@ bulletSound = pygame.mixer.Sound("bullet.mav")
 
 #to music play while the game is on
 music = pygame.mixer.music.load('music.mp3')
-pygame.mixer.music.set_volume(0.02) #so the music will be weeker
+pygame.mixer.music.set_volume(0.5) #so the music will be weeker
 pygame.mixer.music.play(-1) #-1 so it will play all the time
 
 
@@ -101,7 +101,7 @@ while run:
                 score -= 4
 
 
-        # to make the enemy get hit br a bullet
+        # to make the enemy get hit by a bullet
     for bullet in bullets:
         if bullet.y - bullet.radius <lior.hitbox[1] + lior.hitbox[3] and bullet.y + bullet.radius > lior.hitbox[1]:  #to chck if the bolets are in the enemy hit box on the y axis
             if bullet.x + bullet.radius > lior.hitbox[0] and bullet.x - bullet.radius < lior.hitbox[0] + lior.hitbox[2]:  #to chck if the bolets are in the enemy hit box on the x axis
@@ -129,7 +129,7 @@ while run:
         else:
             facing = 1
 
-        if len(bullets) < 5:     #so there will be only 5 at a time
+        if len(bullets) < 5 :     #so there will be only 5 at a time
             bullets.append(projectile(round(david.x + david.width //2) , round(david.y + david.height//2), 5, (250,250,250) , facing))  #making a bullet
             shootOne = 1
 

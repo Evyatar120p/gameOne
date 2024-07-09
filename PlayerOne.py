@@ -18,7 +18,7 @@ class player(object):
         self.x = x
         self.width = width
         self.height = height
-        self.player_vel = 10
+        self.player_vel = 8
 
         # for the jumpung part
         self.is_jump = False
@@ -68,7 +68,7 @@ class player(object):
         self.walkCount = 0
 
         font1 = pygame.font.SysFont('comicsans', 50)
-        text = font1.render('-4', 1, (255, 0, 0))
+        text = font1.render('-4 ', 1, (255, 0, 0))
         screen.blit(text, (score_down, 400))
         pygame.display.update()
         i = 0

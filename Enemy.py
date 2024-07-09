@@ -23,7 +23,7 @@ class enemy(object):
         self.end = end
         self.path = [x,end]  #the start and the end posision
         self.walkCount = 0
-        self.vel = 3
+        self.vel = 5
 
         #to make a hit box
         self.hitbox = (self.x + 10, self.y, 45 ,60)
